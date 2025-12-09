@@ -220,6 +220,10 @@ function escapeHtml(text) {
     return text ? text.replace(/[&<>"']/g, m => map[m]) : '';
 }
 
+// Notification constants
+const NOTIFICATION_DURATION_MS = 3000;
+const NOTIFICATION_ANIMATION_DURATION_MS = 300;
+
 // Show success message
 function showSuccess(message) {
     showNotification(message, 'success');
@@ -266,9 +270,9 @@ function showNotification(message, type) {
     
     document.body.appendChild(notification);
     
-    // Remove after 3 seconds
+    // Remove after timeout
     setTimeout(() => {
         notification.style.animation = 'slideIn 0.3s ease-out reverse';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+        setTimeout(() => notification.remove(), NOTIFICATION_ANIMATION_DURATION_MS);
+    }, NOTIFICATION_DURATION_MS);
 }

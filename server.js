@@ -144,6 +144,11 @@ app.post('/api/products', (req, res) => {
 app.put('/api/products/:id', (req, res) => {
   const { name, description, quantity, price, category } = req.body;
   
+  if (!name || quantity === undefined || price === undefined) {
+    res.status(400).json({ error: 'Name, quantity, and price are required' });
+    return;
+  }
+  
   db.run(
     'UPDATE products SET name = ?, description = ?, quantity = ?, price = ?, category = ? WHERE id = ?',
     [name, description, quantity, price, category, req.params.id],
