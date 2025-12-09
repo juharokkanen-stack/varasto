@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishGear Pro - Fishing Gear Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎣 FishGear Pro</h1>
+            <p class="subtitle">Fishing Gear Inventory Management</p>
+        </header>
+
+        <main>
+            <!-- Add Product Section -->
+            <section class="add-product-section">
+                <h2>Add New Product</h2>
+                <form id="productForm" class="product-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Product Name *</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" id="category" placeholder="e.g., Rods, Reels, Lures">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">Price ($) *</label>
+                            <input type="number" id="price" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity *</label>
+                            <input type="number" id="quantity" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="2" placeholder="Product description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </section>
+
+            <!-- Products List Section -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Products Inventory</h2>
+                    <div class="stats">
+                        <span class="stat-item">Total Products: <strong id="totalProducts">0</strong></span>
+                        <span class="stat-item">Total Items: <strong id="totalItems">0</strong></span>
+                    </div>
+                </div>
+                
+                <div id="productsContainer" class="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Product</h2>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label for="editName">Product Name *</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCategory">Category</label>
+                    <input type="text" id="editCategory">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPrice">Price ($) *</label>
+                        <input type="number" id="editPrice" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editQuantity">Quantity *</label>
+                        <input type="number" id="editQuantity" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">Description</label>
+                    <textarea id="editDescription" rows="2"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
